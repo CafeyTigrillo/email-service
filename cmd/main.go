@@ -1,7 +1,13 @@
 package main
 
 import (
-
+    "email-service/internal/config"
+    "email-service/internal/handlers"
+    "email-service/internal/service"
+    "email-service/pkg/mail"
+    "github.com/gin-gonic/gin"
+    "log"
+    "strconv"
 )
 
 func main() {

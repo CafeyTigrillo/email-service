@@ -1,20 +1,24 @@
 package main
 
 import (
-	"fmt"
-	"log"
-	"net/http"
+
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, World!")
-}
-
 func main() {
-	http.HandleFunc("/", handler)
-	log.Println("Server started at :8080")
-	err := http.ListenAndServe(":8080", nil)
-	if err != nil {
-		log.Fatal(err)
-	}
+    cfg, err := config.LoadConfig()
+    if err != nil {
+        log.Fatal("Error loading config:", err)
+    }
+
+    port, _ := strconv.Atoi(cfg.SMTPPort)
+    mailer := mail.NewMailer(cfg.SMTPHost, port, cfg.SMTPUser, cfg.SMTPPassword)
+    emailService := service.NewEmailService(mailer)
+    emailHandler := handlers.NewEmailHandler(emailService)
+
+    r := gin.Default()
+    r.POST("/api/survey", emailHandler.HandleSendSurvey)
+
+    if err := r.Run(":8080"); err != nil {
+        log.Fatal("Error starting server:", err)
+    }
 }

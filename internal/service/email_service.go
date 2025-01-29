@@ -2,6 +2,7 @@ package service
 
 import (
     "email-service/internal/models"
+    "email-service/pkg/mail"
 )
 
 type EmailService struct {

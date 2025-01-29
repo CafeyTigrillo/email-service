@@ -1,19 +1,27 @@
-# Survey Email API
+# 📨 Survey Email API
 
-A powerful and simple API for sending customer satisfaction survey emails, crafted with Go and Gin framework.
+Servicio REST API para automatizar el envío de encuestas de satisfacción a clientes
 
-## Features
+## 🎯 Propósito
+Este servicio permite enviar automáticamente emails de encuesta a clientes después de su visita a un restaurante, facilitando la recolección de feedback y mejorando la experiencia del cliente.
 
-- Fast and efficient email delivery
-- Secure SMTP integration
-- Easy configuration with environment variables
-- Customer satisfaction survey automation
+## 🔌 Endpoints
 
-## Prerequisites
+### 📬 Enviar Email de Encuesta
 
-- Go 1.16 or later
-- SMTP server credentials
-- .env file for configuration
+**POST /api/survey**
+
+Envía un email personalizado con la encuesta de satisfacción al cliente.
+
+#### 📝 Request Body
+
+```json
+{
+    "email": "cliente@ejemplo.com",    // Email del cliente
+    "name": "Juan Pérez",              // Nombre del cliente
+    "restaurant": "Restaurante XYZ"    // Nombre del restaurante visitado
+}
+```
 
 ## Project Structure
 
@@ -27,31 +35,15 @@ survey-email-api/
 └── pkg/
     └── mail/          # Email handling package
 ```
+## 📋 Funcionalidades
 
-## Environment Setup
+- ✨ Envío automático de encuestas post-visita
+- 🎨 Plantillas de email personalizadas
+- 📊 Tracking de envíos exitosos
+- 🔄 Reintentos automáticos en caso de fallo
+- 🚫 Validación de datos de entrada
+- ⏱ Rate limiting para prevenir spam
 
-Create a `.env` file in your project root:
-
-```env
-SMTP_HOST=your_smtp_host
-SMTP_PORT=your_smtp_port
-SMTP_USER=your_smtp_user
-SMTP_PASSWORD=your_smtp_password
-```
-
-## Getting Started
-
-### Install Dependencies
-
-```bash
-go mod tidy
-```
-
-### Launch the Application
-
-```bash
-go run main.go
-```
 
 Server starts on `http://localhost:8080`
 

@@ -1,7 +1,9 @@
 package handlers
 
 import (
-
+    "email-service/internal/models"
+    "email-service/internal/service"
+    "github.com/gin-gonic/gin"
     "net/http"
 )
 

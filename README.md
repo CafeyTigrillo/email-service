@@ -17,9 +17,9 @@ Envía un email personalizado con la encuesta de satisfacción al cliente.
 
 ```json
 {
-    "email": "cliente@ejemplo.com",    // Email del cliente
-    "name": "Juan Pérez",              // Nombre del cliente
-    "restaurant": "Restaurante XYZ"    // Nombre del restaurante visitado
+    "email": "cliente@ejemplo.com",    
+    "name": "Juan Pérez",              
+    "restaurant": "Restaurante XYZ"    
 }
 ```
 

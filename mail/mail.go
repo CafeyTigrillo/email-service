@@ -21,7 +21,7 @@ func (m *Mailer) SendSurvey(survey models.SurveyEmail) error {
     msg.SetHeader("To", survey.To)
     msg.SetHeader("Subject", "Encuesta de satisfacción - " + survey.Restaurant)
     
-    // Aquí puedes usar HTML para un mejor formato
+    
     body := `
     Hola ` + survey.Name + `,
     

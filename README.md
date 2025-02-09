@@ -27,7 +27,7 @@ Envía un email personalizado con la encuesta de satisfacción al cliente.
 
 ```
 survey-email-api/
-├── main.go              # Application entry point
+├── main.go             # Application entry point
 ├── config/             # Configuration management
 ├── handlers/           # HTTP request handlers
 ├── models/             # Data models
@@ -51,7 +51,7 @@ Server starts on `http://localhost:8080`
 
 ### Send Survey Email
 
-**Endpoint:** `POST /api/survey`
+**Endpoint:** `POST /survey/send-email`
 
 **Request Body:**
 ```json

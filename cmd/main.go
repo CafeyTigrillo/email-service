@@ -22,7 +22,7 @@ func main() {
     emailHandler := handlers.NewEmailHandler(emailService)
 
     r := gin.Default()
-    r.POST("/api/survey", emailHandler.HandleSendSurvey)
+    r.POST("/survey/send-email", emailHandler.HandleSendSurvey)
 
     if err := r.Run(":8080"); err != nil {
         log.Fatal("Error starting server:", err)

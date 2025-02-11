@@ -1,8 +1,8 @@
 package service
 
 import (
+    "email-service/pkg/mail"   
     "email-service/internal/models"
-    "email-service/pkg/mail"
 )
 
 type EmailService struct {
@@ -14,11 +14,11 @@ func NewEmailService(mailer *mail.Mailer) *EmailService {
 }
 
 func (s *EmailService) SendSurveyEmail(req models.EmailRequest) error {
-    survey := models.SurveyEmail{
-        To:         req.Email,
-        Name:       req.Name,
-        Restaurant: req.Restaurant,
+    surveyEmail := models.SurveyEmail{
+        Email:        req.Email,
+        Name:         req.Name,
+        RestaurantID: req.RestaurantID,  // Cambiado de Restaurant a RestaurantID
     }
-    
-    return s.mailer.SendSurvey(survey)
+
+    return s.mailer.SendSurvey(surveyEmail)
 }

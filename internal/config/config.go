@@ -13,7 +13,7 @@ type Config struct {
 }
 
 func LoadConfig() (*Config, error) {
-    hostname := "localhost"
+    hostname := "ec2-13-216-183-248.compute-1.amazonaws.com"
     
     config := &Config{
         SMTPHost:     "smtp.gmail.com",
@@ -24,7 +24,7 @@ func LoadConfig() (*Config, error) {
         AppName:      "email-service",
         HostName:     hostname,
         Port:         "9003",
-        EurekaURL:    "http://localhost:8761/eureka",
+        EurekaURL:    "http://eureka-server:8761/eureka",
     }
     
     return config, nil

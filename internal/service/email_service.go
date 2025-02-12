@@ -15,9 +15,8 @@ func NewEmailService(mailer *mail.Mailer) *EmailService {
 
 func (s *EmailService) SendSurveyEmail(req models.EmailRequest) error {
     surveyEmail := models.SurveyEmail{
-        Email:        req.Email,
-        Name:         req.Name,
-        RestaurantID: req.RestaurantID,  // Cambiado de Restaurant a RestaurantID
+        Email: req.Email,
+        Name:  req.Name,
     }
 
     return s.mailer.SendSurvey(surveyEmail)

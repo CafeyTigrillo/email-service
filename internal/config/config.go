@@ -1,10 +1,5 @@
 package config
 
-import (
-    "os"
-    "github.com/joho/godotenv"
-)
-
 type Config struct {
     SMTPHost     string
     SMTPPort     string
@@ -18,37 +13,19 @@ type Config struct {
 }
 
 func LoadConfig() (*Config, error) {
-    err := godotenv.Load()
-    if err != nil {
-        return nil, err
-    }
-
-    hostname, err := os.Hostname()
-    if err != nil {
-        hostname = "localhost"
-    }
-
+    hostname := "localhost"
+    
     config := &Config{
-        SMTPHost:     os.Getenv("SMTP_HOST"),
-        SMTPPort:     os.Getenv("SMTP_PORT"),
-        SMTPUser:     os.Getenv("SMTP_USER"),
-        SMTPPassword: os.Getenv("SMTP_PASSWORD"),
+        SMTPHost:     "smtp.gmail.com",
+        SMTPPort:     "587",
+        SMTPUser:     "cafeytigrillomagic@gmail.com",
+        SMTPPassword: "bvyw smcm nsuv ootx",
         
-        AppName:      os.Getenv("APP_NAME"),
+        AppName:      "email-service",
         HostName:     hostname,
-        Port:         os.Getenv("PORT"),
-        EurekaURL:    os.Getenv("EUREKA_URL"),
+        Port:         "9003",
+        EurekaURL:    "http://localhost:8761/eureka",
     }
-
-    if config.AppName == "" {
-        config.AppName = "email-service"
-    }
-    if config.Port == "" {
-        config.Port = "8080"
-    }
-    if config.EurekaURL == "" {
-        config.EurekaURL = "http://localhost:8761/eureka"
-    }
-
+    
     return config, nil
 }
